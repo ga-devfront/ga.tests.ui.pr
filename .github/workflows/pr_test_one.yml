@@ -391,6 +391,7 @@ jobs:
           EXTRA_TEST_PARAMS: ${{ fromJson(inputs.FAST_FAIL) && '--bail' || '' }}
           CLIENT_ID_API: ${{ env.CLIENT_ID_API }}
           CLIENT_SECRET_API: ${{ env.CLIENT_SECRET_API }}
+          PS_VERSION: ${{ inputs.BASE_BRANCH }}
 
       - run: echo "SCREENSHOT_CAMPAIGN=$( echo -e '${{ matrix.TEST_CAMPAIGN }}' | tr ':' '-' )" >> $GITHUB_ENV
         if: failure() && steps.runTests.outcome == 'failure'
